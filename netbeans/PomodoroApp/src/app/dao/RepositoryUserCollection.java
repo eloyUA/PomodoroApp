@@ -5,17 +5,17 @@ import app.models.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAOCollection implements UserDAO {
+public class RepositoryUserCollection implements RepositoryUser {
     private List<User> users = new ArrayList<>();
 
-    public UserDAOCollection() {
+    public RepositoryUserCollection() {
         
     }
 
     @Override
     public void create(User user) throws Exception {
         for (User usr : this.users) {
-            if(usr.getId() == user.getId()) {
+            if(usr.getObjectId().equals(user.getObjectId())) {
                 throw new Exception("Id user already exists.");
             }
         }
@@ -23,14 +23,14 @@ public class UserDAOCollection implements UserDAO {
     }
 
     @Override
-    public void deleteById(int id) throws Exception {
+    public void deleteById(String objectId) throws Exception {
         if (this.users.isEmpty()) {
             throw new Exception("There aren't users.");
         }
 
         for (int i = 0; i < this.users.size(); i++) {
             User currentUser = this.users.get(i);
-            if (currentUser.getId() == id) {
+            if (currentUser.getObjectId().equals(objectId)) {
                 this.users.remove(i);
                 return;
             }
@@ -46,7 +46,7 @@ public class UserDAOCollection implements UserDAO {
 
         for (int i = 0; i < this.users.size(); i++) {
             User currentUser = this.users.get(i);
-            if (currentUser.getId() == user.getId()) {
+            if (currentUser.getObjectId().equals(user.getObjectId())) {
                 currentUser.update(user);
                 return;
             }
@@ -55,13 +55,13 @@ public class UserDAOCollection implements UserDAO {
     }
 
     @Override
-    public User getById(int id) throws Exception {
+    public User getById(String objectId) throws Exception {
         if (this.users.isEmpty()) {
             throw new Exception("There aren't users.");
         }
         
         for (User usr : this.users) {
-            if(usr.getId() == id) {
+            if(usr.getObjectId().equals(objectId)) {
                 return new User(usr);
             }
         }

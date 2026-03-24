@@ -5,14 +5,14 @@ import app.models.UserUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserUserDAOCollection implements UserUserDAO {
+public class RepositoryUserUserCollection implements RepositoryUserUser {
     private List<UserUser> relation = new ArrayList<>();
 
     @Override
     public void create(UserUser rel) throws Exception {
         for (UserUser r : relation) {
-            if (r.getIdUserStart() == rel.getIdUserStart() &&
-                r.getIdUserFinish() == rel.getIdUserFinish()) {
+            if (r.getIdUserStart().equals(rel.getIdUserStart()) &&
+                r.getIdUserFinish().equals(rel.getIdUserFinish())) {
                 throw new Exception("Relationship already exists.");
             }
         }
@@ -27,8 +27,8 @@ public class UserUserDAOCollection implements UserUserDAO {
         
         for (int i = 0; i < relation.size(); i++) {
             UserUser current = relation.get(i);
-            if (current.getIdUserStart() == rel.getIdUserStart() &&
-                current.getIdUserFinish() == rel.getIdUserFinish()) {
+            if (current.getIdUserStart().equals(rel.getIdUserStart()) &&
+                current.getIdUserFinish().equals(rel.getIdUserFinish())) {
                 relation.remove(i);
                 return;
             }
@@ -37,12 +37,12 @@ public class UserUserDAOCollection implements UserUserDAO {
     }
 
     @Override
-    public List<User> getFriendsById(int idUser) throws Exception {
+    public List<User> getFriendsById(String idUser) throws Exception {
         List<User> friends = new ArrayList<>();
         for (UserUser r : relation) {
-            if (r.getIdUserStart() == idUser) {
+            if (r.getIdUserStart().equals(idUser)) {
                 User friend = new User();
-                friend.setId(r.getIdUserFinish());
+                friend.setObjectId(r.getIdUserFinish());
                 friends.add(friend);
             }
         }

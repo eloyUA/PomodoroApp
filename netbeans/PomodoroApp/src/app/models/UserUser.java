@@ -2,11 +2,16 @@
 package app.models;
 
 public class UserUser {
-    private int idUserStart;
-    private int idUserFinish;
+    private String idUserStart;
+    private String idUserFinish;
     
     public UserUser() {
         
+    }
+    
+    public UserUser(String idUserStart, String idUserFinish) {
+        this.idUserStart = idUserStart;
+        this.idUserFinish = idUserFinish;
     }
     
     public UserUser(UserUser relation) {
@@ -14,19 +19,19 @@ public class UserUser {
         this.idUserFinish = relation.getIdUserFinish();
     }
     
-    public int getIdUserStart() {
+    public String getIdUserStart() {
         return idUserStart;
     }
 
-    public void setIdUserStart(int idUserStart) {
+    public void setIdUserStart(String idUserStart) {
         this.idUserStart = idUserStart;
     }
 
-    public int getIdUserFinish() {
+    public String getIdUserFinish() {
         return idUserFinish;
     }
 
-    public void setIdUserFinish(int idUserFinish) {
+    public void setIdUserFinish(String idUserFinish) {
         this.idUserFinish = idUserFinish;
     }
     

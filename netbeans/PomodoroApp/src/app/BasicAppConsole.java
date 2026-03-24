@@ -1,16 +1,16 @@
 
 package app;
 
-import app.dao.UserDAO;
-import app.dao.UserDAOCollection;
-import app.dao.UserUserDAO;
-import app.dao.UserUserDAOCollection;
+import app.dao.RepositoryUserCollection;
+import app.dao.RepositoryUserUserCollection;
 import app.models.User;
 import app.models.UserUser;
 import app.services.ServiceUser;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import app.dao.RepositoryUser;
+import app.dao.RepositoryUserUser;
 
 
 public class BasicAppConsole {
@@ -181,8 +181,8 @@ public class BasicAppConsole {
     }
     
     public static void main(String[] args) throws Exception {
-        UserDAO userDAO = new UserDAOCollection();
-        UserUserDAO userUserDAO = new UserUserDAOCollection();
+        RepositoryUser userDAO = new RepositoryUserCollection();
+        RepositoryUserUser userUserDAO = new RepositoryUserUserCollection();
         ServiceUser serviceUser = new ServiceUser(userDAO, userUserDAO);
         new BasicAppConsole(serviceUser).run();
     }

@@ -2,7 +2,7 @@
 package app.models;
 
 public class Exercise {
-    private int id;
+    private String objectId;
     private String name;
     private String description;
     private String studyZone;
@@ -14,14 +14,19 @@ public class Exercise {
     }
     
     public Exercise(Exercise exercise) {
-        this.id = exercise.getId();
+        this.objectId = exercise.getObjectId();
         this.name = exercise.getName();
         this.description = exercise.getDescription();
         this.studyZone = exercise.getStudyZone();
         this.difficultyLevel = exercise.getDifficultyLevel();
     }
     
-    public Exercise(String name, String description, String studyZone, String difficultyLevel) {
+    public Exercise(
+            String name,
+            String description,
+            String studyZone,
+            String difficultyLevel) {
+        
         this.name = name;
         this.description = description;
         this.studyZone = studyZone;
@@ -35,12 +40,12 @@ public class Exercise {
         this.difficultyLevel = exercise.getDifficultyLevel();
     }
     
-    public int getId() {
-        return id;
+    public String getObjectId() {
+        return objectId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(String objectId) {
+        this.objectId = objectId;
     }
 
     public String getName() {

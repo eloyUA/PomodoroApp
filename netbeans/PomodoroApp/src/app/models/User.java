@@ -2,7 +2,7 @@
 package app.models;
 
 public class User {
-    private int id;
+    private String objectId;
     private String name;
     private int studyTimeInMin;
     private int meanExerciseTimeInMin;
@@ -14,7 +14,7 @@ public class User {
     }
     
     public User(User user) {
-        this.id = user.getId();
+        this.objectId = user.getObjectId();
         this.name = user.getName();
         this.studyTimeInMin = user.getStudyTimeInMin();
         this.score = user.getScore();
@@ -32,12 +32,12 @@ public class User {
         this.score = user.getScore();
     }
 
-    public int getId() {
-        return id;
+    public String getObjectId() {
+        return objectId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
     }
 
     public String getName() {

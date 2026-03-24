@@ -4,17 +4,17 @@ import app.models.Exercise;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExerciseDAOCollection implements ExerciseDAO {
+public class RepositoryExerciseCollection implements RepositoryExercise {
     private List<Exercise> exercises = new ArrayList<>();
 
-    public ExerciseDAOCollection() {
+    public RepositoryExerciseCollection() {
 
     }
 
     @Override
     public void create(Exercise exercise) throws Exception {
         for (Exercise ex : this.exercises) {
-            if (ex.getId() == exercise.getId()) {
+            if (ex.getObjectId().equals(exercise.getObjectId())) {
                 throw new Exception("Id exercise already exists.");
             }
         }
@@ -22,7 +22,7 @@ public class ExerciseDAOCollection implements ExerciseDAO {
     }
 
     @Override
-    public void deleteById(int id) throws Exception {
+    public void deleteById(String objectId) throws Exception {
         if (this.exercises.isEmpty()) {
             throw new Exception("There aren't exercises.");
         }
@@ -30,7 +30,7 @@ public class ExerciseDAOCollection implements ExerciseDAO {
         for (int i = 0; i < this.exercises.size(); i++) {
             Exercise currentExercise = this.exercises.get(i);
 
-            if (currentExercise.getId() == id) {
+            if (currentExercise.getObjectId().equals(objectId)) {
                 this.exercises.remove(i);
                 return;
             }
@@ -47,7 +47,7 @@ public class ExerciseDAOCollection implements ExerciseDAO {
         for (int i = 0; i < this.exercises.size(); i++) {
             Exercise currentExercise = this.exercises.get(i);
 
-            if (currentExercise.getId() == exercise.getId()) {
+            if (currentExercise.getObjectId().equals(exercise.getObjectId())) {
                 currentExercise.update(exercise);
                 return;
             }
@@ -56,16 +56,21 @@ public class ExerciseDAOCollection implements ExerciseDAO {
     }
 
     @Override
-    public Exercise getById(int id) throws Exception {
+    public Exercise getById(String objectId) throws Exception {
         if (this.exercises.isEmpty()) {
             throw new Exception("There aren't exercises.");
         }
 
         for (Exercise ex : this.exercises) {
-            if (ex.getId() == id) {
+            if (ex.getObjectId().equals(objectId)) {
                 return new Exercise(ex);
             }
         }
         throw new Exception("Id exercise not exists.");
+    }
+
+    @Override
+    public List<Exercise> getAll() throws Exception {
+        return new ArrayList<>(this.exercises);
     }
 }

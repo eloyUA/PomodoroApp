@@ -4,14 +4,28 @@ import java.util.Date;
 
 public class UserExercise {
 
-    private int idUser;
-    private int idExercise;
+    private String idUser;
+    private String idExercise;
     private Date date;
     private int minutes;
     private int meters;
     
     public UserExercise() {
         
+    }
+    
+    public UserExercise(
+            String idUser,
+            String idExercise,
+            Date date,
+            int minutes,
+            int meters) {
+        
+        this.idUser = idUser;
+        this.idExercise = idExercise;
+        this.date = date;
+        this.minutes = minutes;
+        this.meters = meters;
     }
 
     public UserExercise(UserExercise relation) {
@@ -22,19 +36,19 @@ public class UserExercise {
         this.meters = relation.getMeters();
     }
     
-    public int getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 
-    public int getIdExercise() {
+    public String getIdExercise() {
         return idExercise;
     }
 
-    public void setIdExercise(int idExercise) {
+    public void setIdExercise(String idExercise) {
         this.idExercise = idExercise;
     }
 

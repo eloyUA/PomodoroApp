@@ -5,8 +5,8 @@ import app.models.User;
 import app.models.UserUser;
 import java.util.List;
 
-public interface UserUserDAO {
+public interface RepositoryUserUser {
     void create(UserUser relation) throws Exception;
     void delete(UserUser relation) throws Exception;
-    List<User> getFriendsById(int idUser) throws Exception;
+    List<User> getFriendsById(String idUser) throws Exception;
 }
