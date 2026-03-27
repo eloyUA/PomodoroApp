@@ -15,7 +15,7 @@ public class ServiceExercise {
     }
     
     public void createExercise(Exercise exercise) throws Exception {
-        this.repoExercise.create(exercise);
+        this.repoExercise.insert(exercise);
     }
     
     public void updateExercise(Exercise exercise) throws Exception {
