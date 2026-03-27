@@ -1,0 +1,5 @@
+TODO:
+    1) RepositoryUserExerciseBack4app el metodo getExerciseByIdUser => Tiene que devolver List<UserExercise>
+    2) Cambiar TODOS los tiempos a flotantes y segundos
+    3) ServicioFriendship: En el metodo getFriendRankingByIdUser() no devuelve en orden el ranking, hay que ordenarlo
+    4) Cambiar nombres de create => insert en los repositorios
