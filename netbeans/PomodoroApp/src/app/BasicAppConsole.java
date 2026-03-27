@@ -1,8 +1,8 @@
 
 package app;
 
-import app.dao.RepositoryUserCollection;
-import app.dao.RepositoryUserUserCollection;
+import app.dao.local.RepositoryUserCollection;
+import app.dao.local.RepositoryUserUserCollection;
 import app.models.User;
 import app.models.UserUser;
 import app.services.ServiceUser;

@@ -1,6 +1,7 @@
 
-package app.dao;
+package app.dao.local;
 
+import app.dao.RepositoryUser;
 import app.models.User;
 import java.util.ArrayList;
 import java.util.List;

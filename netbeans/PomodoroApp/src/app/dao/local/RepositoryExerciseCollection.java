@@ -1,5 +1,6 @@
-package app.dao;
+package app.dao.local;
 
+import app.dao.RepositoryExercise;
 import app.models.Exercise;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class RepositoryExerciseCollection implements RepositoryExercise {
     }
 
     @Override
-    public void create(Exercise exercise) throws Exception {
+    public void insert(Exercise exercise) throws Exception {
         for (Exercise ex : this.exercises) {
             if (ex.getObjectId().equals(exercise.getObjectId())) {
                 throw new Exception("Id exercise already exists.");
