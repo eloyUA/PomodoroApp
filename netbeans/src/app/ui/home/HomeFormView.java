@@ -1,7 +1,5 @@
 
-package app.ui.home.views;
-
-import app.ui.home.viewmodels.ActivityFormViewmodel;
+package app.ui.home;
 
 public interface HomeFormView {
     void open();

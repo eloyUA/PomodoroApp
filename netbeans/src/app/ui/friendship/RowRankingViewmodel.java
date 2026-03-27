@@ -1,4 +1,4 @@
-package app.ui.friendship.viewmodels;
+package app.ui.friendship;
 
 public class RowRankingViewmodel {
     private String friendId;
@@ -6,7 +6,7 @@ public class RowRankingViewmodel {
     private int studyTimeInMin;
     private float meanTimeExerciseInMin;
     private int meters;
-    private float points;
+    private float score;
     
     public RowRankingViewmodel() {
         
@@ -18,14 +18,14 @@ public class RowRankingViewmodel {
             int studyTimeInMin,
             float meanTimeExerciseInMin,
             int meters,
-            float points) {
+            float score) {
         
         this.friendId = friendId;
         this.name = name;
         this.studyTimeInMin = studyTimeInMin;
         this.meanTimeExerciseInMin = meanTimeExerciseInMin;
         this.meters = meters;
-        this.points = points;
+        this.score = score;
     }
     
     public RowRankingViewmodel(RowRankingViewmodel row) {
@@ -34,7 +34,7 @@ public class RowRankingViewmodel {
         this.studyTimeInMin = row.getStudyTimeInMin();
         this.meanTimeExerciseInMin = row.getMeanTimeExerciseInMin();
         this.meters = row.meters;
-        this.points = row.getPoints();
+        this.score = row.getScore();
     }
 
     public String getFriendId() {
@@ -77,11 +77,11 @@ public class RowRankingViewmodel {
         this.meters = meters;
     }
 
-    public float getPoints() {
-        return points;
+    public float getScore() {
+        return score;
     }
 
-    public void setPoints(float points) {
-        this.points = points;
+    public void setScore(float score) {
+        this.score = score;
     }
 }

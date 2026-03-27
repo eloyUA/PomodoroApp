@@ -44,7 +44,7 @@ public class Exercise {
         return objectId;
     }
 
-    public void setId(String objectId) {
+    public void setObjectId(String objectId) {
         this.objectId = objectId;
     }
 

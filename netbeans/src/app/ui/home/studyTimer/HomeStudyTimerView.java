@@ -1,10 +1,10 @@
 
-package app.ui.home.views;
+package app.ui.home.studyTimer;
 
 public interface HomeStudyTimerView {
     void open();
     void close();
     void setDurationInMin(int duration);
     void setEvtTimeExpired(Runnable evtTimeExpired);
-    void setEvtCancel(Runnable evtCancel);
+    void setEvtFinish(Runnable evtFinish);
 }

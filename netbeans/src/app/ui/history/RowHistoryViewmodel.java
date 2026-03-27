@@ -1,4 +1,4 @@
-package app.ui.history.viewmodels;
+package app.ui.history;
 
 import java.util.Date;
 
@@ -7,16 +7,20 @@ public class RowHistoryViewmodel {
     private String nameExercise;
     private int durationInMin;
     
+    public RowHistoryViewmodel() {
+        
+    }
+    
     public RowHistoryViewmodel(Date date, String nameExercise, int timeInMin) {
         this.date = date;
         this.nameExercise = nameExercise;
         this.durationInMin = timeInMin;
     }
 
-    public RowHistoryViewmodel(RowHistoryViewmodel fila) {
-        this.date = fila.getDate();
-        this.nameExercise = fila.getNameExercise();
-        this.durationInMin = fila.getDurationInMin();
+    public RowHistoryViewmodel(RowHistoryViewmodel row) {
+        this.date = row.getDate();
+        this.nameExercise = row.getNameExercise();
+        this.durationInMin = row.getDurationInMin();
     }
 
     public Date getDate() {

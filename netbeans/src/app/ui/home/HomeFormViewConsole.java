@@ -1,10 +1,6 @@
 
-package app.ui.home.views;
+package app.ui.home;
 
-import app.ui.home.enums.DifficultyEnum;
-import app.ui.home.enums.TemporizerEnum;
-import app.ui.home.enums.ZoneEnum;
-import app.ui.home.viewmodels.ActivityFormViewmodel;
 import java.util.Scanner;
 
 public class HomeFormViewConsole implements HomeFormView {
@@ -18,32 +14,32 @@ public class HomeFormViewConsole implements HomeFormView {
 
     @Override
     public void open() {
-        ZoneEnum zones[] = ZoneEnum.values();
+        EnumZone zones[] = EnumZone.values();
         String strZonasPosibles = "";
-        for (ZoneEnum zona : zones) {
+        for (EnumZone zona : zones) {
             strZonasPosibles += zona.toString() + " ";
         }
         
-        DifficultyEnum difficulties[] = DifficultyEnum.values();
+        EnumDifficulty difficulties[] = EnumDifficulty.values();
         String strDificultadesPosibles = "";
-        for (DifficultyEnum difficulty : difficulties) {
+        for (EnumDifficulty difficulty : difficulties) {
             strDificultadesPosibles += difficulty.toString() + " ";
         }
         
-        TemporizerEnum temporizers[] = TemporizerEnum.values();
+        EnumTemporizer temporizers[] = EnumTemporizer.values();
         String strTemporizadoresPosibles = "";
-        for (TemporizerEnum temporizer : temporizers) {
+        for (EnumTemporizer temporizer : temporizers) {
             strTemporizadoresPosibles += temporizer.toString() + " ";
         }
         
         System.out.println("Inicio:");
         System.out.println("    Formulario:");
         System.out.print("        1) Lugar de estudio (" + strZonasPosibles + ") -> ");
-        ZoneEnum zone = ZoneEnum.valueOf(this.keyboard.nextLine());
+        EnumZone zone = EnumZone.valueOf(this.keyboard.nextLine());
         System.out.print("        2) Dificultades posibles (" + strDificultadesPosibles + ") -> ");
-        DifficultyEnum difficulty = DifficultyEnum.valueOf(this.keyboard.nextLine());
+        EnumDifficulty difficulty = EnumDifficulty.valueOf(this.keyboard.nextLine());
         System.out.print("        3) Temporizadores posibles (" + strTemporizadoresPosibles + ") -> ");
-        TemporizerEnum temporizer = TemporizerEnum.valueOf(this.keyboard.nextLine());
+        EnumTemporizer temporizer = EnumTemporizer.valueOf(this.keyboard.nextLine());
         
         this.activityForm = new ActivityFormViewmodel(zone, difficulty, temporizer);
         this.evtStart.run();

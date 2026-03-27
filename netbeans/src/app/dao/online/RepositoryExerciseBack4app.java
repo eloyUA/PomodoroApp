@@ -67,7 +67,7 @@ public class RepositoryExerciseBack4app implements RepositoryExercise {
             JsonObject jsonResponse = new Gson().fromJson(responseBody, JsonObject.class);
 
             if (jsonResponse.has("objectId")) {
-                exercise.setId(jsonResponse.get("objectId").getAsString());
+                exercise.setObjectId(jsonResponse.get("objectId").getAsString());
             }
 
         } catch (IOException ex) {
@@ -158,7 +158,7 @@ public class RepositoryExerciseBack4app implements RepositoryExercise {
             JsonObject json = new Gson().fromJson(responseBody, JsonObject.class);
 
             Exercise exercise = new Exercise();
-            exercise.setId(json.get("objectId").getAsString());
+            exercise.setObjectId(json.get("objectId").getAsString());
             exercise.setName(json.get("name").getAsString());
             exercise.setDescription(json.get("description").getAsString());
             exercise.setStudyZone(json.get("studyZone").getAsString());
@@ -199,7 +199,7 @@ public class RepositoryExerciseBack4app implements RepositoryExercise {
                 JsonObject obj = results.get(i).getAsJsonObject();
 
                 Exercise exercise = new Exercise();
-                exercise.setId(obj.get("objectId").getAsString());
+                exercise.setObjectId(obj.get("objectId").getAsString());
                 exercise.setName(obj.get("name").getAsString());
                 exercise.setDescription(obj.get("description").getAsString());
                 exercise.setStudyZone(obj.get("studyZone").getAsString());

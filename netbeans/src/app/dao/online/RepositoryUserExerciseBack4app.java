@@ -135,7 +135,7 @@ public class RepositoryUserExerciseBack4app implements RepositoryUserExercise {
                     JsonObject obj = results.get(i).getAsJsonObject();
 
                     Exercise exercise = new Exercise();
-                    exercise.setId(obj.get("idExercise").getAsString());
+                    exercise.setObjectId(obj.get("idExercise").getAsString());
                     exercises.add(exercise);
                 }
             }

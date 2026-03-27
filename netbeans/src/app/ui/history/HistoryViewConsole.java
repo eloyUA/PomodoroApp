@@ -1,7 +1,7 @@
-package app.ui.history.views;
+package app.ui.history;
 
-import app.ui.history.viewmodels.AnaliticsViewmodel;
-import app.ui.history.viewmodels.RowHistoryViewmodel;
+import app.ui.history.AnaliticsViewmodel;
+import app.ui.history.RowHistoryViewmodel;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

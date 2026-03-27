@@ -14,8 +14,8 @@ public class User {
         
     }
     
-    public User(String objectId) {
-        this.objectId = objectId;
+    public User(String name) {
+        this.name = name;
     }
     
     public User(User user) {

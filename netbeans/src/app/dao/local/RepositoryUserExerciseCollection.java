@@ -38,13 +38,11 @@ public class RepositoryUserExerciseCollection implements RepositoryUserExercise 
     }
 
     @Override
-    public List<Exercise> getExercisesByIdUser(String idUser) throws Exception {
-        List<Exercise> exercises = new ArrayList<>();
+    public List<UserExercise> getExercisesByIdUser(String idUser) throws Exception {
+        List<UserExercise> exercises = new ArrayList<>();
         for (UserExercise r : relation) {
             if (r.getIdUser().equals(idUser)) {
-                Exercise exercise = new Exercise();
-                exercise.setId(r.getIdExercise());
-                exercises.add(exercise);
+                exercises.add(r);
             }
         }
         return exercises;

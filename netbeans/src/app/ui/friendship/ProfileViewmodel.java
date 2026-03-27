@@ -1,4 +1,4 @@
-package app.ui.friendship.viewmodels;
+package app.ui.friendship;
 
 public class ProfileViewmodel {
     private String id;
@@ -13,9 +13,9 @@ public class ProfileViewmodel {
         this.name = name;
     }
     
-    public ProfileViewmodel(ProfileViewmodel perfil) {
-        this.id = perfil.getId();
-        this.name = perfil.getName();
+    public ProfileViewmodel(ProfileViewmodel profile) {
+        this.id = profile.getId();
+        this.name = profile.getName();
     }
     
     public void setId(String id) {

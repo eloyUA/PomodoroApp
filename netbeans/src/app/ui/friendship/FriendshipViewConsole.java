@@ -1,7 +1,7 @@
-package app.ui.friendship.views;
+package app.ui.friendship;
 
-import app.ui.friendship.viewmodels.ProfileViewmodel;
-import app.ui.friendship.viewmodels.RowRankingViewmodel;
+import app.ui.friendship.ProfileViewmodel;
+import app.ui.friendship.RowRankingViewmodel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,9 +11,10 @@ public class FriendshipViewConsole implements FriendshipView {
     
     private List<RowRankingViewmodel> ranking;
     private ProfileViewmodel profile;
-    private int friendId;
     private Runnable evtChangeName;
     private Runnable evtAddFriend;
+    private String friendId;
+    private String newName;
     
     public FriendshipViewConsole() {
         this.keyboard = new Scanner(System.in);
@@ -33,7 +34,7 @@ public class FriendshipViewConsole implements FriendshipView {
                 System.out.print("   " + fila.getStudyTimeInMin());
                 System.out.print("   " + fila.getMeanTimeExerciseInMin());
                 System.out.print("   " + fila.getMeters());
-                System.out.println("   " + fila.getPoints());
+                System.out.println("   " + fila.getScore());
             }
         }
         
@@ -47,7 +48,7 @@ public class FriendshipViewConsole implements FriendshipView {
         }
         
         System.out.println("    Opciones:");
-        System.out.println("        1) Cerrar pantalla Amigos.");
+        System.out.println("        1) Cerrar.");
         System.out.println("        2) Agregar un amigo.");
         System.out.println("        3) Actualizar perfil.");
         
@@ -62,8 +63,16 @@ public class FriendshipViewConsole implements FriendshipView {
         
         switch (opcion) {
             case 1: this.close(); break;
-            case 2: this.evtAddFriend.run(); break;
-            case 3: this.evtChangeName.run(); break;
+            case 2: 
+                System.out.println("Agregar un amigo");
+                System.out.println("    Id amigo -> ");
+                this.friendId = this.keyboard.nextLine();
+                this.evtAddFriend.run(); break;
+            case 3:
+                System.out.println("Actualizar perfil");
+                System.out.println("    Nombre -> ");
+                this.newName = this.keyboard.nextLine();
+                this.evtChangeName.run(); break;
             default: break;
         }
     }
@@ -79,8 +88,8 @@ public class FriendshipViewConsole implements FriendshipView {
     }
 
     @Override
-    public void setProfile(ProfileViewmodel perfil) {
-        this.profile = new ProfileViewmodel(perfil);
+    public void setProfile(ProfileViewmodel profile) {
+        this.profile = new ProfileViewmodel(profile);
     }
 
     @Override
@@ -94,17 +103,12 @@ public class FriendshipViewConsole implements FriendshipView {
     }
 
     @Override
-    public List<RowRankingViewmodel> getRanking() {
-        return new ArrayList<>(this.ranking);
-    }
-
-    @Override
-    public ProfileViewmodel getProfile() {
-        return new ProfileViewmodel(this.profile);
-    }
-
-    @Override
-    public int getFriendId() {
+    public String getFriendId() {
         return this.friendId;
+    }
+    
+    @Override
+    public String getNewName() {
+        return this.newName;
     }
 }

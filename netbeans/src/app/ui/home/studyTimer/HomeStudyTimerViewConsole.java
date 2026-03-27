@@ -1,5 +1,5 @@
 
-package app.ui.home.views;
+package app.ui.home.studyTimer;
 
 
 public class HomeStudyTimerViewConsole implements HomeStudyTimerView {
@@ -43,7 +43,7 @@ public class HomeStudyTimerViewConsole implements HomeStudyTimerView {
     }
 
     @Override
-    public void setEvtCancel(Runnable evtCancel) {
-        this.evtFinish = evtCancel;
+    public void setEvtFinish(Runnable evtFinish) {
+        this.evtFinish = evtFinish;
     }
 }

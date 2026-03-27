@@ -1,13 +1,11 @@
 
-package app.ui.home.views;
-
-import app.ui.home.viewmodels.ExerciseViewmodel;
+package app.ui.home.activityTimer;
 
 public class HomeActivityTimerViewConsole implements HomeActivityTimerView {
-    private int durationInMin;
-    private ExerciseViewmodel exercise;
+    private int timerInSec;
+    private ActivityViewmodel activiy;
     private Runnable evtComplete;
-    private Runnable evtCancel;
+    private Runnable evtCancel; // Este no lo usamos en la consola
     
     public HomeActivityTimerViewConsole() {
         
@@ -17,18 +15,19 @@ public class HomeActivityTimerViewConsole implements HomeActivityTimerView {
     public void open() {
         System.out.println("Inicio (Temporizador Ejercicio):");
         System.out.println("    Ejercicio a realizar:");
-        if (this.exercise == null) {
+        if (this.activiy == null) {
             System.out.println("        Sin datos.");
         }
         else {
-            System.out.println("        Nombre: " + this.exercise.getName());
-            System.out.println("        Descripcion: " + this.exercise.getDescription());
+            System.out.println("        Nombre: " + this.activiy.getName());
+            System.out.println("        Descripcion: " + this.activiy.getDescription());
         }
         
         try  {
-            for (int tMin = 0; tMin < this.durationInMin; tMin++) {
+            for (int tMin = 0; tMin < this.activiy.getDurationInMin(); tMin++) {
                 for (int i = 0; i < 60; i++) {
                     Thread.sleep(1000);
+                    this.timerInSec += 1;
                     System.out.println("Tiempo: " + tMin + ":" + i);
                 }
             }
@@ -43,13 +42,8 @@ public class HomeActivityTimerViewConsole implements HomeActivityTimerView {
     }
 
     @Override
-    public void setDurationActivityInMin(int duration) {
-        this.durationInMin = duration;
-    }
-
-    @Override
-    public void setExercise(ExerciseViewmodel exercise) {
-        this.exercise = exercise;
+    public void setActivityViewmodel(ActivityViewmodel activity) {
+        this.activiy = activity;
     }
 
     @Override
@@ -60,5 +54,15 @@ public class HomeActivityTimerViewConsole implements HomeActivityTimerView {
     @Override
     public void setEvtCancel(Runnable evtCancel) {
         this.evtCancel = evtCancel;
+    }
+
+    @Override
+    public ActivityViewmodel getActivityViewmodel() {
+        return this.activiy;
+    }
+
+    @Override
+    public int getTimerInMin() {
+        return (int) ((float) (this.timerInSec) / (float) (60.0));
     }
 }
