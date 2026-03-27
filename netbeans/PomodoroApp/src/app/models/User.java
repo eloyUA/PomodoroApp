@@ -5,12 +5,17 @@ public class User {
     private String objectId;
     private String name;
     private int studyTimeInMin;
-    private int meanExerciseTimeInMin;
+    private float meanExerciseTimeInMin;
+    private int numExercisesCompleted;
     private int meters;
-    private int score;
+    private float score;
     
     public User() {
         
+    }
+    
+    public User(String objectId) {
+        this.objectId = objectId;
     }
     
     public User(User user) {
@@ -27,8 +32,12 @@ public class User {
     }
     
     public void update(User user) {
+        this.objectId = user.getObjectId();
         this.name = user.getName();
         this.studyTimeInMin = user.getStudyTimeInMin();
+        this.meanExerciseTimeInMin = user.getMeanExerciseTimeInMin();
+        this.numExercisesCompleted = user.getNumExercisesCompleted();
+        this.meters = user.getMeters();
         this.score = user.getScore();
     }
 
@@ -51,16 +60,35 @@ public class User {
     public int getStudyTimeInMin() {
         return studyTimeInMin;
     }
-
-    public void setStudyTimeInMin(int stydyTimeInMin) {
-        this.studyTimeInMin = stydyTimeInMin;
+    
+    public float getMeanExerciseTimeInMin() {
+        return meanExerciseTimeInMin;
+    }
+    
+    public int getNumExercisesCompleted() {
+        return this.numExercisesCompleted;
+    }
+    
+    public int getMeters() {
+        return this.meters;
     }
 
-    public int getScore() {
+    public void setMeters(int meters) {
+        this.meters = meters;
+    }
+
+    public float getScore() {
         return score;
     }
-
-    public void setScore(int score) {
-        this.score = score;
+    
+    public void finishActivity(int extraStudyTimeInMin, int exerciseTimeInMin, int extraMeters) {
+        this.studyTimeInMin += extraStudyTimeInMin;
+        
+        float time = this.meanExerciseTimeInMin * this.numExercisesCompleted + exerciseTimeInMin;
+        this.numExercisesCompleted += 1;
+        this.meanExerciseTimeInMin = time / this.numExercisesCompleted;
+        
+        this.meters += extraMeters;
+        this.score = (float) (this.studyTimeInMin + this.meters) / (float) (this.meanExerciseTimeInMin);
     }
 }

@@ -2,23 +2,16 @@
 package app.services;
 
 import app.dao.RepositoryExercise;
-import app.dao.RepositoryUserExercise;
 import app.models.Exercise;
-import app.models.UserExercise;
 import java.util.List;
 
 
 public class ServiceExercise {
     
     private RepositoryExercise repoExercise;
-    private RepositoryUserExercise repoUserExercise;
     
-    public ServiceExercise(
-            RepositoryExercise repoExercise, 
-            RepositoryUserExercise repoUserExercise) {
-        
+    public ServiceExercise(RepositoryExercise repoExercise) {
         this.repoExercise = repoExercise;
-        this.repoUserExercise = repoUserExercise;
     }
     
     public void createExercise(Exercise exercise) throws Exception {
@@ -39,17 +32,5 @@ public class ServiceExercise {
     
     public List<Exercise> getAllExercises() throws Exception {
         return this.repoExercise.getAll();
-    }
-    
-    public void createUserExercise(UserExercise userExercise) throws Exception {
-        this.repoUserExercise.create(userExercise);
-    }
-    
-    public void deleteUserExerciseByIds(String userId, String exerciseId) throws Exception {
-        this.repoUserExercise.deleteByIds(userId, exerciseId);
-    }
-    
-    public List<Exercise> getExercisesByIdUser(String userId) throws Exception {
-        return this.repoUserExercise.getExercisesByIdUser(userId);
     }
 }

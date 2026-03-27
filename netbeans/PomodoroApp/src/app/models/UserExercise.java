@@ -7,6 +7,7 @@ public class UserExercise {
     private String idUser;
     private String idExercise;
     private Date date;
+    private int prevStudyTimeInMin;
     private int minutes;
     private int meters;
     
@@ -18,12 +19,14 @@ public class UserExercise {
             String idUser,
             String idExercise,
             Date date,
+            int prevStudyTimeInMin,
             int minutes,
             int meters) {
         
         this.idUser = idUser;
         this.idExercise = idExercise;
         this.date = date;
+        this.prevStudyTimeInMin = prevStudyTimeInMin;
         this.minutes = minutes;
         this.meters = meters;
     }
@@ -32,6 +35,7 @@ public class UserExercise {
         this.idUser = relation.getIdUser();
         this.idExercise = relation.getIdExercise();
         this.date = relation.getDate();
+        this.prevStudyTimeInMin = relation.getPrevStudyTimeInMin();
         this.minutes = relation.getDuration();
         this.meters = relation.getMeters();
     }
@@ -60,6 +64,14 @@ public class UserExercise {
         this.date = date;
     }
 
+    public int getPrevStudyTimeInMin() {
+        return this.prevStudyTimeInMin;
+    }
+
+    public void setPrevStudyTimeInMin(int prevStudyTimeInMin) {
+        this.prevStudyTimeInMin = prevStudyTimeInMin;
+    }
+    
     public int getDuration() {
         return minutes;
     }
